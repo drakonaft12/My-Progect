@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class CarPlayer : MonoBehaviour
 {
-    
+
+    [SerializeField] private int _velocity = 200 ;
     void Start()
     {
         
@@ -27,8 +28,8 @@ public class CarPlayer : MonoBehaviour
     {
         if (Input.GetAxis("Vertical") != 0f && Work)
         {
-            GetComponent<Rigidbody>().AddForce(transform.forward * 2000 * Input.GetAxis("Vertical"));
-            GetComponent<Rigidbody>().AddForce(transform.up * 200 * Input.GetAxis("Vertical"));
+            GetComponent<Rigidbody>().AddForce(transform.forward * 10 * _velocity * Input.GetAxis("Vertical"));
+            GetComponent<Rigidbody>().AddForce(transform.up * _velocity * Input.GetAxis("Vertical"));
         }
         if (Input.GetAxis("Horizontal") != 0f && Work)
         {
