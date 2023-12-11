@@ -9,7 +9,8 @@ public class Calculate : MonoBehaviour
         Sum,
         Sub,
         Multi,
-        Div
+        Div,
+        Degree
     }
 
     [SerializeField] private float _number1;
@@ -42,6 +43,20 @@ public class Calculate : MonoBehaviour
         var result = number1 / number2;
         return $"Result division => {result}";
     }
+    private string DegreeCalculate(float number1, float number2)
+    {
+
+        if(((int)number2) != number2)
+        {
+            return "Number 2 must be an integer";
+        }
+        var result =  number1;
+        for(int i = 0; i < number2; i++)
+        {
+            result *= number1;
+        }
+        return $"Result degree => {result}";
+    }
 
     // Update is called once per frame
     void Update()
@@ -61,6 +76,9 @@ public class Calculate : MonoBehaviour
                     break;
                 case Operations.Div:
                     Debug.Log(DivCalculate(_number1, _number2));
+                    break;
+                case Operations.Degree:
+                    Debug.Log(DegreeCalculate(_number1, _number2));
                     break;
             }
             _calculate = false;
